@@ -41,6 +41,7 @@
 #include <tr1/unordered_map>
 #endif
 
+#include "g2o_core_api.h"
 
 /** @addtogroup graph */
 //@{
@@ -55,14 +56,14 @@ namespace g2o {
      The vertices are uniquely identified by an int id, while the edges are
      identfied by their pointers. 
    */
-  class  HyperGraph
+  class G2O_CORE_API HyperGraph
   {
     public:
 
       /**
        * \brief enum of all the types we have in our graphs
        */
-      enum  HyperGraphElementType {
+      enum G2O_CORE_API HyperGraphElementType {
         HGET_VERTEX,
         HGET_EDGE,
         HGET_PARAMETER,
@@ -73,13 +74,13 @@ namespace g2o {
 
       typedef std::bitset<HyperGraph::HGET_NUM_ELEMS> GraphElemBitset;
 
-      class  Vertex;
-      class  Edge;
+      class G2O_CORE_API Vertex;
+      class G2O_CORE_API Edge;
       
       /**
        * base hyper graph element, specialized in vertex and edge
        */
-      struct  HyperGraphElement {
+      struct G2O_CORE_API HyperGraphElement {
         virtual ~HyperGraphElement() {}
         /**
          * returns the type of the graph element, see HyperGraphElementType
@@ -94,7 +95,7 @@ namespace g2o {
       typedef std::vector<Vertex*>                      VertexContainer;
 
       //! abstract Vertex, your types must derive from that one
-      class  Vertex : public HyperGraphElement {
+      class G2O_CORE_API Vertex : public HyperGraphElement {
         public:
           //! creates a vertex having an ID specified by the argument
           explicit Vertex(int id=-1);
@@ -116,7 +117,7 @@ namespace g2o {
        * Abstract Edge class. Your nice edge classes should inherit from that one.
        * An hyper-edge has pointers to the vertices it connects and stores them in a vector.
        */
-      class  Edge : public HyperGraphElement {
+      class G2O_CORE_API Edge : public HyperGraphElement {
         public:
           //! creates and empty edge with no vertices
           explicit Edge(int id = -1);

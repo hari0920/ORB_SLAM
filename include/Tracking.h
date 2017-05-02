@@ -91,6 +91,7 @@ public:
 
 protected:
     void GrabImage(const sensor_msgs::ImageConstPtr& msg);
+    //void CachImage(cont sensor_msgs::ImageConstPtr & msg);
 
     void FirstInitialization();
     void Initialize();
@@ -113,6 +114,9 @@ protected:
 
     bool NeedNewKeyFrame();
     void CreateNewKeyFrame();
+
+    /** @brief Exports the scene to an NVM file **/
+    void ExportNVM(std::string& filepath);
 
 
     //Other Thread Pointers
@@ -180,6 +184,9 @@ protected:
 
     // Transfor broadcaster (for visualization in rviz)
     tf::TransformBroadcaster mTfBr;
+
+    //std::deque<const sensor_msgs::ImageConstPtr> mImageCache;
+    //boost::mutex mMutexImageCacheAccess;
 };
 
 } //namespace ORB_SLAM
